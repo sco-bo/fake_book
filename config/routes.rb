@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  resource :friendships, only: [:create]
+
   get 'users/index'
 
   get 'users/show'
-
-  get 'users/create'
 
   devise_for :users
   devise_scope :user do 
