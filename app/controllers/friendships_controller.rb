@@ -1,44 +1,30 @@
 class FriendshipsController < ApplicationController
   before_action :find_friend
 
-  def accept
+  def update 
     if current_user.requested_friends.include?(@friend)
       Friendship.accept(current_user, @friend)
       flash[:notice] = "Friendship with #{@friend.email} accepted"
     else
       flash[:notice] = "No Friendship request"
     end
-    redirect_to root_url
+    redirect_to users_index_path
   end
 
-  def decline
-    if current_user.requested_friends.include?(@friend)
-      Friendship.breakup(current_user, @friend)
-      flash[:notice] = "Friendship with #{@friend.email} declined"
-    else
-      flash[:notice] = "No Friendship request"
-    end
-    redirect_to root_url
-  end
-
-  def delete
+  def destroy
     if current_user.friends.include?(@friend)
       Friendship.breakup(current_user, @friend)
       flash[:notice] = "Successfully unfriended #{@friend.email}"
-    else
-      flash[:notice] = "No Friendship request"
-    end
-    redirect_to root_url
-  end
-
-  def cancel
-    if current_user.pending_friends.include?(@friend)
+    elsif current_user.requested_friends.include?(@friend)
       Friendship.breakup(current_user, @friend)
-      flash[:notice] = "Friend request to #{@friend.email} retracted"
+      flash[:notice] = "Friendship with #{@friend.email} declined"
+    elsif current_user.pending_friends.include?(@friend)
+      Friendship.breakup(current_user, @friend)
+      flash[:notice] = "Friend request to #{@friend.email} retracted"        
     else
       flash[:notice] = "No Friendship request"
     end
-    redirect_to root_url
+    redirect_to users_index_path
   end
 
   def create

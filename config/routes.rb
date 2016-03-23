@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resource :friendships, only: [:create]
+  resources :friendships, only: [:create, :update, :destroy]
 
   get 'users/index'
 
