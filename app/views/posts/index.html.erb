@@ -1,0 +1,6 @@
+<%= provide(:title, 'Feed') %>
+
+<% @posts.each do |post| %>
+  <h4><%= post.user.name %></h4>
+  <%= post.body %></br>
+<% end %>

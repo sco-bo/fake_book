@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  resources :friendships, only: [:create, :update, :destroy]
-
-  get 'users/index'
-
-  get 'users/show'
-
   devise_for :users
   devise_scope :user do 
     authenticated :user do 
@@ -15,4 +9,15 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end  
+
+  resources :friendships, only: [:create, :update, :destroy]
+  resources :posts, except: [:show, :edit, :update]
+
+  get 'feed', to: 'posts#index'
+  
+  get 'users', to: 'users#index'
+
+  get 'users/:id', to: 'users#show', as: :user
+
+  
 end
