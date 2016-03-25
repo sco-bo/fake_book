@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   devise_scope :user do 
     authenticated :user do 
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :friendships, only: [:create, :update, :destroy]
   resources :posts, except: [:show, :edit, :update]
+  resources :likes, only: [:create, :destroy]
 
   get 'feed', to: 'posts#index'
   
@@ -19,5 +21,4 @@ Rails.application.routes.draw do
 
   get 'users/:id', to: 'users#show', as: :user
 
-  
 end

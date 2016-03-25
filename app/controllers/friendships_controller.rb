@@ -8,7 +8,7 @@ class FriendshipsController < ApplicationController
     else
       flash[:notice] = "No Friendship request"
     end
-    redirect_to users_index_path
+    redirect_to users_index_path #this will have to do until I implement Ajax
   end
 
   def destroy
@@ -24,13 +24,13 @@ class FriendshipsController < ApplicationController
     else
       flash[:notice] = "No Friendship request"
     end
-    redirect_to users_index_path
+    redirect_to users_index_path #this will have to do until I implement Ajax
   end
 
   def create
     Friendship.request(current_user, @friend)
     flash[:notice] = "Friend request sent"
-    redirect_to users_index_path
+    redirect_to users_index_path #this will have to do until I implement Ajax
   end
 
   private
