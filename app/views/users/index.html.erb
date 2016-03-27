@@ -3,8 +3,8 @@
 <% @users.each do |user| %>
   <% unless user == current_user %>
     <p>
-      <strong><%= user.email %></strong>
-      <% if !Friendship.exists?(current_user, user) %>
+      <strong><%= user.email %></strong> 
+      <% if !Friendship.exists?(current_user, user) %> 
         <%= link_to 'Add Friend', friendships_path(:friend_id => user.id), method: :post %>
       <% elsif current_user.requested_friends.include?(user) %>
         <%= link_to 'Accept Friend Request', friendship_path(current_user, :friend_id => user.id), method: :put %> | <%= link_to 'Decline Friend Request', friendship_path(current_user, :friend_id => user.id), method: :delete %>

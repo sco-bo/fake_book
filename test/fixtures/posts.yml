@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  body: MyText
-  user_id: 
+  body: This is a beautiful day
+  user: scott
 
 two:
-  body: MyText
-  user_id: 
+  body: Excited for my bike ride this afternoon
+  user: dave
+
+three:
+  body: Who's ready for breakfast?!
+  user: dave

@@ -1,19 +1,22 @@
 require 'test_helper'
 
 class FriendshipsControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
+  # def setup
+  #   @user = users(:scott)
+  #   @dave = users(:dave)
+  #   @zach = users(:zach)
+  # end
 
-  test "should get update" do
-    get :update
-    assert_response :success
-  end
+  # test "friendships can be created" do 
+  #   assert_difference ('Friendship.count') do 
+  #     post :create, friendship: {friend: users(:zach), user: users(:zach)}
+  #   end
+  # end
 
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
-  end
+  # test "friendships can be ended" do 
+  #   assert_difference ('Friendship.count') do 
+  #     delete :destroy, friendship: {user: users(:scott), friend: users(:zach)}
+  #   end
+  # end
 
 end
