@@ -1,7 +1,7 @@
 <%= provide(:title, 'Feed') %>
 
 <% @posts.each do |post| %>
-  <h4><%= post.user.name %></h4>
+  <h4><%= link_to post.user.name, user_path(post.user) %></h4>
   <%= post.body %></br>
   <% if current_user.already_likes?(post) %>
     <%= link_to 'Unlike', like_path(current_user, user_id: current_user.id), method: :delete %>

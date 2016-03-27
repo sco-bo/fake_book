@@ -1,0 +1,9 @@
+<% if !Friendship.exists?(current_user, user) %> 
+  <%= link_to 'Add Friend', friendships_path(:friend_id => user.id), method: :post %>
+<% elsif current_user.requested_friends.include?(user) %>
+  <%= link_to 'Accept Friend Request', friendship_path(current_user, :friend_id => user.id), method: :put %> | <%= link_to 'Decline Friend Request', friendship_path(current_user, :friend_id => user.id), method: :delete %>
+<% elsif current_user.friends.include?(user) %>
+  <%= link_to 'Un-Friend', friendship_path(current_user, :friend_id => user.id), method: :delete %>
+<% elsif current_user.pending_friends.include?(user) %>
+  <%= link_to 'Cancel Friend Request', friendship_path(current_user, :friend_id => user.id), method: :delete %>
+<% end %>

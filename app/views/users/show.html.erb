@@ -1,2 +1,13 @@
 <%= provide(:title, @user.name) %>
 
+<% unless current_user == @user %>
+  <%= render partial: 'friendships/friendships_status', locals: {user: @user} %> 
+  <!-- will need to adjust where this redirects and possibly customize the layout -->
+<% end %>
+
+<% if @user.posts.any? %>
+  <% @user.posts.each do |post| %>
+    <p><%= post.body %><p>
+    <%= render partial: 'likes/like_post', locals: {post: post} %>
+  <% end %>
+<% end %>

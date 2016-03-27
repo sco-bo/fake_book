@@ -5,7 +5,8 @@
         <%= link_to 'Profile', current_user, class: "navbar-brand" %>
       </div>
       <ul class="nav navbar-nav">
-        
+        <li class="<%= 'active' if current_page?(feed_path) %>"><%= link_to "FakeBook Feed", feed_path %></li>
+        <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to "FakeBook Friends", users_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
 
