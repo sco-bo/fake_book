@@ -1,12 +1,7 @@
 <%= provide(:title, 'Feed') %>
 
+<%= render 'posts/post_form' %>
 <% @posts.each do |post| %>
-  <h4><%= link_to post.user.name, user_path(post.user) %></h4>
-  <%= post.body %></br>
-  <% if current_user.already_likes?(post) %>
-    <%= link_to 'Unlike', like_path(current_user, user_id: current_user.id), method: :delete %>
-  <% else %>
-    <%= link_to 'Like', likes_path(post_id: post.id), method: :post %>
-  <% end %>
+  <%= render partial: 'posts/post_partial', locals: {post: post} %>
 
 <% end %>

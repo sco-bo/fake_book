@@ -1,10 +1,15 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @post = current_user.posts.build
+    @posts = Post.all.order('created_at DESC')
   end
 
   def new
     @post = Post.new
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def create
@@ -17,6 +22,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to :back
   end
 
   private

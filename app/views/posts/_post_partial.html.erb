@@ -1,0 +1,24 @@
+<% unless current_page?(user_path(post.user)) %>
+  <h4><%= link_to post.user.name, user_path(post.user) %></h4>
+<% end %>
+<p><%= post.body %></p></br>
+<strong>Posted <%= time_ago_in_words(post.created_at) %> ago</strong></br>
+<% if current_user == post.user %></p>
+  <%= link_to 'Delete Post', post_path(post, post.id), method: :delete %>
+<% else %>
+  <%= render partial: 'likes/like_post', locals: {post: post} %></br>
+  <%= link_to 'View Post', post_path(post), method: :get %>
+<% end %></br>
+
+<h4>Comments</h4>
+<%= render partial: 'comments/comment', locals: {post: post}  %>
+<h5>Add a Comment:</h5>
+<%= form_for([post, post.comments.build]) do |f| %>
+  <p>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Post Comment", class: "btn btn-primary"%>
+  </p>
+<% end %></br>

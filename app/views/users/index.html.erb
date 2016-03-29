@@ -1,4 +1,5 @@
 <%= provide(:title, 'Users') %>
+<%= render 'posts/post_form' %>
 
 <% @users.each do |user| %>
   <% unless user == current_user %>

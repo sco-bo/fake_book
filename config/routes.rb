@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   end  
 
   resources :friendships, only: [:create, :update, :destroy]
-  resources :posts, except: [:show, :edit, :update]
+  resources :posts, except: [:edit, :update] do 
+    resources :comments, only: [:show, :create, :destroy]
+  end
   resources :likes, only: [:create, :destroy]
 
   get 'feed', to: 'posts#index'

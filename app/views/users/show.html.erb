@@ -1,4 +1,5 @@
 <%= provide(:title, @user.name) %>
+<%= render 'posts/post_form' %>
 
 <% unless current_user == @user %>
   <%= render partial: 'friendships/friendships_status', locals: {user: @user} %> 
@@ -7,7 +8,10 @@
 
 <% if @user.posts.any? %>
   <% @user.posts.each do |post| %>
-    <p><%= post.body %><p>
-    <%= render partial: 'likes/like_post', locals: {post: post} %>
+    <%= render partial: 'posts/post_partial', locals: {post: post} %>
+  
+    <!-- <p><%= post.body %><p> -->
+    
+    
   <% end %>
 <% end %>
