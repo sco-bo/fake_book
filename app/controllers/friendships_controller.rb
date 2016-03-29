@@ -4,33 +4,33 @@ class FriendshipsController < ApplicationController
   def update 
     if current_user.requested_friends.include?(@friend)
       Friendship.accept(current_user, @friend)
-      flash[:notice] = "Friendship with #{@friend.email} accepted"
+      flash[:notice] = "Friendship with #{@friend.name} accepted"
     else
       flash[:notice] = "No Friendship request"
     end
-    redirect_to users_path #this will have to do until I implement Ajax
+    redirect_to :back
   end
 
   def destroy
     if current_user.friends.include?(@friend)
       Friendship.breakup(current_user, @friend)
-      flash[:notice] = "Successfully unfriended #{@friend.email}"
+      flash[:notice] = "Successfully unfriended #{@friend.name}"
     elsif current_user.requested_friends.include?(@friend)
       Friendship.breakup(current_user, @friend)
-      flash[:notice] = "Friendship with #{@friend.email} declined"
+      flash[:notice] = "Friendship with #{@friend.name} declined"
     elsif current_user.pending_friends.include?(@friend)
       Friendship.breakup(current_user, @friend)
-      flash[:notice] = "Friend request to #{@friend.email} retracted"        
+      flash[:notice] = "Friend request to #{@friend.name} retracted"        
     else
       flash[:notice] = "No Friendship request"
     end
-    redirect_to users_path #this will have to do until I implement Ajax
+    redirect_to :back
   end
 
   def create
     Friendship.request(current_user, @friend)
     flash[:notice] = "Friend request sent"
-    redirect_to users_path #this will have to do until I implement Ajax
+    redirect_to :back
   end
 
   private

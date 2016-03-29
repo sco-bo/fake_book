@@ -14,7 +14,6 @@
 <%= render 'posts/post_form' %>
 <% unless current_user == @user %>
   <%= render partial: 'friendships/friendships_status', locals: {user: @user} %> 
-  <!-- will need to adjust where this redirects and possibly customize the layout -->
 <% end %>
 
 <% if @user.posts.any? %>
