@@ -1,6 +1,17 @@
 <%= provide(:title, @user.name) %>
-<%= render 'posts/post_form' %>
 
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= image_tag @user.gravatar_url default: "retro" %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+<%= render 'posts/post_form' %>
 <% unless current_user == @user %>
   <%= render partial: 'friendships/friendships_status', locals: {user: @user} %> 
   <!-- will need to adjust where this redirects and possibly customize the layout -->
@@ -8,10 +19,6 @@
 
 <% if @user.posts.any? %>
   <% @user.posts.each do |post| %>
-    <%= render partial: 'posts/post_partial', locals: {post: post} %>
-  
-    <!-- <p><%= post.body %><p> -->
-    
-    
+    <%= render partial: 'posts/post_partial', locals: {post: post} %>  
   <% end %>
 <% end %>
