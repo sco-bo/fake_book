@@ -11,8 +11,6 @@ Rails.application.routes.draw do
     unauthenticated do 
       root 'devise/sessions#new', as: :unauthenticated_root
     end
-
-    # delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end  
 
   resources :friendships, only: [:create, :update, :destroy]
@@ -26,5 +24,4 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
 
   get 'users/:id', to: 'users#show', as: :user
-
 end
