@@ -1,5 +1,9 @@
 class FriendshipsController < ApplicationController
-  before_action :find_friend
+  before_action :find_friend, except: :index
+
+  def index
+    @friends = current_user.friends
+  end
 
   def update 
     if current_user.requested_friends.include?(@friend)
