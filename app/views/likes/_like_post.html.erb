@@ -1,5 +1,5 @@
 <% if current_user.already_likes?(post) %>
-  <%= link_to 'Unlike', like_path(current_user, user_id: current_user.id), method: :delete %>
+  <%= link_to 'Unlike', like_path(current_user, user_id: current_user.id), method: :delete, class: 'btn btn-default stat-item' %>
 <% else %>
-  <%= link_to 'Like', likes_path(post_id: post.id), method: :post %>
-<% end %>
+  <%= link_to "#{post.likes.count}", likes_path(post_id: post.id), method: :post, class: 'btn btn-default stat-item' %>
+<% end %> 
