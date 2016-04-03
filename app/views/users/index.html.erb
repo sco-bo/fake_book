@@ -11,10 +11,9 @@
             <table class="table user-list">
               <thead>
                 <tr>
-                <th><span>User</span></th>
-                <th><span>Friends</span></th>
-                <th class="text-center"><span>Status</span></th>
-                <th>&nbsp;</th>
+                  <th><span>User</span></th>
+                  <th><span>Friends</span></th>
+                  <th class="text-center"><span>Status</span></th>
                 </tr>
               </thead>
               <tbody>
@@ -27,7 +26,9 @@
                       </td>
                       <td><%= pluralize(user.friends.count, "Friend") %></td>
                       <td class="text-center">
-                        <%= render partial: 'friendships/friendships_status', locals: {user: user} %>
+                        <div id="friend-form">
+                          <%= render partial: 'friendships/friendships_status', locals: {user: user} %>
+                        </div>
                       </td>
                     </tr>
                   <% end %>
