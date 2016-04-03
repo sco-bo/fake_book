@@ -8,10 +8,11 @@
         <h4 class="user"><%= comment.user.name %></h4>
         <h5 class="time"><%= time_ago_in_words(comment.created_at) unless comment.created_at.blank? %> ago</h5>
       </div>
-      <p><%= comment.comment %></p>
-      <% if current_user == comment.user %>
-        <%= link_to 'delete', post_comment_path(post, comment), method: :delete %>
-      <% end %>
+      <p><%= comment.comment %></br>
+        <% if current_user == comment.user %>
+          <%= link_to 'delete comment', post_comment_path(post, comment), method: :delete %>
+        <% end %>
+      </p>
     </div>
   </li>
 <% end %>

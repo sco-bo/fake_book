@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 body { padding-top: 70px; }
 
@@ -129,7 +130,7 @@ aside {
   border-top: 1px solid #ddd;
   padding: 15px;
 }
-.post .post-footer .input-group-addon a {
+.post .post-footer .input-group-addon {
   color: #454545;
 }
 .post .post-footer .comments-list {

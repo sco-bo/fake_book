@@ -28,6 +28,7 @@ gem 'faker'
 gem 'gravtastic'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'font-awesome-rails'
 
 
 # Use ActiveModel has_secure_password
