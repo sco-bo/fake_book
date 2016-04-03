@@ -1,20 +1,46 @@
 <%= provide(:title, 'Users') %>
 <%= render 'posts/post_form' %>
 
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <% @users.each do |user| %>
-        <% unless user == current_user %>
-        <h1>
-          <%= image_tag user.gravatar_url default: "retro" %>
-          <%= link_to user.name, user_path(user) %>
-          <%= render partial: 'friendships/friendships_status', locals: {user: user} %>
-        </h1>
-        <% end %>
-      <% end %>
-    </section>
-  </aside>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="main-box no-header clearfix">
+        <div class="main-box-body clearfix">
+          <div class="table-responsive">
+            <table class="table user-list">
+              <thead>
+                <tr>
+                <th><span>User</span></th>
+                <th><span>Friends</span></th>
+                <th class="text-center"><span>Status</span></th>
+                <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                  <% unless user == current_user %>
+                    <tr>
+                      <td>
+                        <%= image_tag user.gravatar_url default: "retro" %>
+                        <%= link_to user.name, user_path(user) %>
+                      </td>
+                      <td><%= pluralize(user.friends.count, "Friend") %></td>
+                      <td class="text-center">
+                        <%= render partial: 'friendships/friendships_status', locals: {user: user} %>
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 
   

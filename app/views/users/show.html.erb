@@ -1,5 +1,6 @@
 <%= provide(:title, @user.name) %>
 
+<%= render 'posts/post_form' %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -11,7 +12,6 @@
   </aside>
 </div>
 
-<%= render 'posts/post_form' %>
 <% unless current_user == @user %>
   <%= render partial: 'friendships/friendships_status', locals: {user: @user} %> 
 <% end %>
