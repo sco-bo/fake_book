@@ -6,4 +6,13 @@ class Post < ActiveRecord::Base
   has_many :commenting_users, through: :comments, source: :user
   mount_uploader :photo, PhotoUploader
 
+  validate :photo_size
+
+  private
+  
+    def photo_size
+      if photo.size > 5.megabytes
+        errors.add(:photo, "should be smaller than 5mb")
+      end
+    end
 end
