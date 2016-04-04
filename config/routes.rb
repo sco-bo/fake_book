@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   
   get 'users', to: 'users#index'
 
-  get 'users/:id', to: 'users#show', as: :user
+  # get 'users/:id', to: 'users#show', as: :user
+
+  match 'users/:id', :to => "users#show", :as => :user, :via => :get
 end
