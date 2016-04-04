@@ -1,8 +1,9 @@
-<%= form_for @post do |f| %>
+<%= form_for @post, html: { multipart: true } do |f| %>
   <div class="text">
     <%= f.text_area :body, placeholder: "What's up #{current_user.name}?" %>
   </div>
-
   <%= f.submit "Post", class: "btn btn-primary" %>
-
+  <span class="picture">
+    <%= f.file_field :photo %>
+  </span>
 <% end %>
