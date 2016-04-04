@@ -9,7 +9,9 @@
           <%= link_to friend.name, user_path(friend) %>
           <%= render partial: 'friendships/friendships_status', locals: {user: friend} %>
         </h1>
-        <h6 class="text-muted time">active <%= time_ago_in_words(friend.last_sign_in_at) %> ago</h6>
+        <% unless friend.last_sign_in_at.blank? %>
+          <h6 class="text-muted time">active <%= time_ago_in_words(friend.last_sign_in_at) %> ago</h6>
+        <% end %>
       <% end %>
     </section>
   </aside>
