@@ -26,7 +26,8 @@ User.create!(
   user = User.new(
     name: Faker::Name.name,
     email: Faker::Internet.email,
-    password: "password"
+    password: "password",
+    last_sign_in_at: Time.now
     )
   user.save
 end

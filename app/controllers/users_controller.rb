@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  require 'will_paginate/array'
+
   def index
     @post = current_user.posts.build
     @users = User.all
