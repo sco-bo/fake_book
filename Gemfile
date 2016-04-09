@@ -34,6 +34,7 @@ gem 'mini_magick'
 gem 'fog'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'rails_12factor'
 
 
 # Use ActiveModel has_secure_password
