@@ -46,8 +46,8 @@ gem 'rails_12factor'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :test do
-  
+group :test, :darwin do
+  gem 'rb-fsevent'
 end
 
 group :development, :test do
@@ -56,7 +56,6 @@ group :development, :test do
   gem 'minitest-reporters'
   gem 'mini_backtrace'
   gem 'guard-minitest'
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
 end
 
 group :development do
