@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   
   get 'users', to: 'users#index'
 
-  match 'users/:id', :to => "users#show", :as => :user, :via => :get
+  match 'users/:id', :to => "users#show", constraints: {id: /[^\/]+/}, :as => :user, :via => :get
 end
