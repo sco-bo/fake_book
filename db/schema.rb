@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160404120452) do
   end
 
   add_index "likes", ["post_id"], name: "index_likes_on_post_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.text     "body"
@@ -75,6 +76,5 @@ ActiveRecord::Schema.define(version: 20160404120452) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "comments", "posts"
-  add_foreign_key "likes", "posts"
   add_foreign_key "posts", "users"
 end

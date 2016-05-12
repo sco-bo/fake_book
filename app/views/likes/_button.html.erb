@@ -1,0 +1,9 @@
+<% if current_user.like?(post) %>
+  <%= button_to unlike_path(post_id: post.id), remote: true, method: :delete, class: 'btn btn-default stat-item active' do %>
+    <i class='fa fa-thumbs-up icon'></i><%= post.likes.count unless post.likes.empty? %>
+  <% end %>
+<% else %>
+  <%= button_to like_path(post_id: post.id), remote: true, class: 'btn btn-default stat-item' do %>
+    <i class='fa fa-thumbs-up icon'></i><%= post.likes.count unless post.likes.empty? %>
+  <% end %>
+<% end %>

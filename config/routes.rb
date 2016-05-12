@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   resources :posts, except: [:edit, :update] do 
     resources :comments
   end
-  resources :likes, only: [:create, :destroy]
+
+  match 'like', to: 'likes#like', via: :post 
+
+  match 'unlike', to: 'likes#unlike', via: :delete
 
   get 'feed', to: 'posts#index'
   

@@ -1,5 +1,0 @@
-<% if current_user.already_likes?(post) %>
-  <%= link_to "<i class='fa fa-thumbs-up icon'></i>#{post.likes.count}".html_safe, like_path(current_user, user_id: current_user.id), method: :delete, class: 'btn btn-default stat-item active' %>
-<% else %>
-  <%= link_to "<i class='fa fa-thumbs-up icon'></i>#{post.likes.count}".html_safe, likes_path(post_id: post.id), method: :post, class: 'btn btn-default stat-item' %>
-<% end %> 
